@@ -13,10 +13,5 @@
 		"OrganizationName": "Scotch",
 		"OrganizationId": "scotch",
 		"Description": "" 
-	},
-	{
-		"OrganizationName": "Beer",
-		"OrganizationId": "beer",
-		"Description": ""
 	}
 ]

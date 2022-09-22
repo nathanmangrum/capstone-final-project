@@ -1,69 +1,69 @@
 [
   {
     "GroupId": 1,
-    "GroupName": "United Front",
-    "OrganizationName": "Organization One",
-    "SponsorName": "Natalie Rachelle",
+    "GroupName": "Scotch Snobs",
+    "OrganizationName": "Scotch",
+    "SponsorName": "Ron Swanson",
     "SponsorPhone": "555-000-0000",
-    "SponsorEmail": "nat214@gmail.com",
+    "SponsorEmail": "governmentisbad@gmail.com",
     "MaxGroupSize": 7,
     "Members": [
       {
         "MemberId": 2,
-        "MemberEmail": "theaterkid0625@gmail.com",
-        "MemberName": "Ezra Aiden",
+        "MemberEmail": "imakeinternscry@gmail.com",
+        "MemberName": "Tony Spurlock",
         "MemberPhone": "555-000-0002"
       },
       {
         "MemberId": 4,
-        "MemberEmail": "aslan_the_great@gmail.com",
-        "MemberName": "Elisha Aslan",
+        "MemberEmail": "dont_steal_my_precious@gmail.com",
+        "MemberName": "Bilbo Baggins",
         "MemberPhone": "555-000-0003"
       },
       {
         "MemberId": 6,
-        "MemberEmail": "susa2007@gmail.com",
-        "MemberName": "Siddalee Grace",
+        "MemberEmail": "my_names_frack@gmail.com",
+        "MemberName": "Frank Reynolds",
         "MemberPhone": "555-000-0020"
       }
     ]
   },
   {
     "GroupId": 2,
-    "GroupName": "Warriors",
-    "OrganizationName": "Organization Two",
-    "SponsorName": "Brittany Ray",
+    "GroupName": "Bourbon Ballers",
+    "OrganizationName": "Bourbon",
+    "SponsorName": "Nathan Mangrum",
     "SponsorPhone": "555-000-0004",
-    "SponsorEmail": "brit805@aol.com",
+    "SponsorEmail": "imawesome@aol.com",
     "MaxGroupSize": 7,
     "Members": [
       {
         "MemberId": 1,
-        "MemberEmail": "pursy1222@gmail.com",
-        "MemberName": "Pursalane Faye",
+        "MemberEmail": "disc_golfer94@gmail.com",
+        "MemberName": "Andrew Klaassen",
         "MemberPhone": "555-000-0005"
       },
       {
         "MemberId": 5,
-        "MemberEmail": "thebro@gmail.com",
-        "MemberName": "Zephaniah Hughes",
+        "MemberEmail": "i_run_a_liquor_store@gmail.com",
+        "MemberName": "TJ McCLain",
         "MemberPhone": "555-000-0006"
       }
     ]
   },
   {
     "GroupId": 3,
-    "GroupName": "Strategy One",
-    "OrganizationName": "Organization Three",
-    "SponsorName": "Zachary Westly",
+    "GroupName": "Rye Revelation",
+    "OrganizationName": "Rye",
+    "SponsorName": "Rye Lover",
     "SponsorPhone": "555-000-0012",
-    "SponsorEmail": "zwest90@gmail.com",
+    "SponsorEmail": "ryelover@gmail.com",
     "MaxGroupSize": 7,
     "Members": [
       {
         "MemberId": 3,
-        "MemberEmail": "ian_the_great@gmail.com",
-        "MemberName": "Ian Auston",
+        "MemberEmail": "rye@gmail.com",
+        "MemberName": "Gollum",
         "MemberPhone": "555-000-0025"
       }
     ]

@@ -1,10 +1,21 @@
-
-<div class="header">
-  <p-menubar [model]="items">
-
-  </p-menubar>
+<div class="wrapper">
+  <p-panel header="Whiskey" class="main">
+    <p-menubar [model]="items">
+      <ng-template pTemplate="end">
+        <input type="text" pInputText placeholder="Search">
+      </ng-template>
+    </p-menubar>
+    <div class="grid">
+      <p-card class="col-12">
+        <p-button class="col 4" label="View Details"></p-button>
+      </p-card>
+      <p-card class="col-12">
+        <p-button label="View Details"></p-button>
+      </p-card>
+      <p-card class="col-12">
+        <p-button label="View Details"></p-button>
+      </p-card>
+    </div>
+  </p-panel>
 </div>
-<p-panel header="Whiskey Tastings">
-  
-</p-panel>
-<button type="button" pButton label="submit"></button>
+<app-register [isRegisterClicked]="showRegisterDialog"></app-register>
