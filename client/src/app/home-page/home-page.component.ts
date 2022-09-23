@@ -8,38 +8,13 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  items!: MenuItem[];
-  showRegisterDialog = false;
 
   constructor(private readonly router: Router) { }
 
   ngOnInit(): void {
-    this.items = [
-      {
-        label: 'Whiskies',
-        command: this.routeToWhiskiesComponent
-      },
-      {
-        label: 'Tasting Groups',
-        command: this.routeToGroupsComponent
-      },
-      {
-        label: 'Register',
-        command: this.openRegisterDialog
-      }
-  ];
+
   }
 
-  routeToWhiskiesComponent() {
-    console.log('whiskies component');
-  }
 
-  routeToGroupsComponent() {
-    console.log('groups component');
-  }
-
-  openRegisterDialog() {
-    this.showRegisterDialog = true;
-  }
 
 }

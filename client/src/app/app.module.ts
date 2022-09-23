@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component'
@@ -14,15 +15,20 @@ import { GroupsComponent } from './groups/groups.component';
 import { WhiskeyTypesComponent } from './whiskey-types/whiskey-types.component';
 import { RegisterComponent } from './register/register.component';
 import { MainComponent } from './main/main.component';
+import { NavComponent } from './nav/nav.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
-  declarations: [		
+  declarations: [			
     AppComponent,
     HomePageComponent,
     GroupsComponent,
     WhiskeyTypesComponent,
       RegisterComponent,
-      MainComponent
+      MainComponent,
+      NavComponent
    ],
   imports: [
     BrowserModule,
@@ -32,9 +38,13 @@ import { MainComponent } from './main/main.component';
     BrowserAnimationsModule,
     CardModule,
     ButtonModule,
-    DialogModule
+    DialogModule,
+    ToastModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ MessageService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,21 +1,23 @@
 <div class="wrapper">
   <p-panel header="Whiskey" class="main">
-    <p-menubar [model]="items">
-      <ng-template pTemplate="end">
-        <input type="text" pInputText placeholder="Search">
-      </ng-template>
-    </p-menubar>
-    <div class="grid">
-      <p-card class="col-12">
-        <p-button class="col 4" label="View Details"></p-button>
+    <div class="grid card-wrapper">
+        <p-card class="col-12" header="Scotch">
+            <img class="scotch" src="./././assets/images/0x0.jpeg" alt="scotch">
+            <p>Scotch whisky is categorized as malt whiskey distilled in Scotland. There are multiple types of Scotch
+              and each offer a different flavor profile. Certain areas of Scotland are known for specific flavors as well.
+              For instance, on the island of Islay they use peat to fuel fires to dry malted barley. This gives it a taste one could 
+              describe as 'like drinking a liquid campfire.'
+            </p>
+            <p-button label="View Details"></p-button>
       </p-card>
-      <p-card class="col-12">
+      <p-card class="col-12" header="Bourbon">
+        <img class="bourbon" src="./././assets/images/bourbon.png" alt="my-bourbon">
         <p-button label="View Details"></p-button>
       </p-card>
-      <p-card class="col-12">
+      <p-card class="col-12" header="Rye">
         <p-button label="View Details"></p-button>
       </p-card>
     </div>
   </p-panel>
 </div>
-<app-register [isRegisterClicked]="showRegisterDialog"></app-register>
+
