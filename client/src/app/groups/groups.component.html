@@ -1,1 +1,32 @@
-<p>groups works!</p>
+
+<p-panel header="Tasting Groups">
+  <p-table *ngIf="groups$ | async as groups"
+           [value]="groups"
+           selectionMode="single"
+           [(selection)]="selectedGroup"
+           (onRowSelect)="showGroupDetails($event.data)"
+           (onRowUnselect)="showDetails = false">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Group Name</th>
+        <th>Organization</th>
+        <th>Sponsor</th>
+        <th>Member Count</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-groups>
+      <tr [pSelectableRow]="groups">
+        <td>{{ groups.GroupName }}</td>
+        <td>{{ groups.OrganizationName }}</td>
+        <td>{{ groups.SponsorName }}</td>
+        <td>{{ groups.Members.length }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-button label="Add Group" *ngIf="!showDetails">
+
+  </p-button>
+</p-panel>
+<div *ngIf="showDetails">
+  <app-group-details [groupDetails]="selectedGroup"></app-group-details>
+</div>

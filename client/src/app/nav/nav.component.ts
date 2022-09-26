@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -11,21 +12,21 @@ export class NavComponent implements OnInit {
   items!: MenuItem[];
   showRegisterDialog: boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.items = [
       {
         label: 'Whiskies',
-        command: this.routeToWhiskiesComponent
+        command: () => { this.router.navigate(['/**']) }
       },
       {
         label: 'Tasting Groups',
-        command: this.routeToGroupsComponent
+        command: () => { this.router.navigate(['/tasting-groups']) }
       },
       {
         label: 'Register a group',
-        command: this.openRegisterDialog
+        command: () => { this.openRegisterDialog() }
       }
     ];
   }
@@ -35,7 +36,8 @@ export class NavComponent implements OnInit {
   }
 
   routeToGroupsComponent() {
-    console.log('groups component');
+    console.log('is it trying');
+    this.router.navigateByUrl('/tasting-groups');
   }
 
   openRegisterDialog() {

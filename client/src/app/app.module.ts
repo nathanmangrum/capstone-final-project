@@ -7,6 +7,7 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
+import { TableModule } from 'primeng/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component'
@@ -19,20 +20,24 @@ import { NavComponent } from './nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
+import { GroupDetailsComponent } from './group-details/group-details.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [			
+  declarations: [				
     AppComponent,
     HomePageComponent,
     GroupsComponent,
     WhiskeyTypesComponent,
-      RegisterComponent,
-      MainComponent,
-      NavComponent
+    RegisterComponent,
+    MainComponent,
+    NavComponent,
+    GroupDetailsComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     MenubarModule,
     PanelModule,
     BrowserAnimationsModule,
@@ -42,7 +47,8 @@ import { MessageService } from 'primeng/api';
     ToastModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    TableModule
   ],
   providers: [ MessageService ],
   bootstrap: [AppComponent]

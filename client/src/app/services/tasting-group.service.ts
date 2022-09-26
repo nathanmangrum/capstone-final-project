@@ -9,14 +9,13 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class TastingGroupService {
 // TODO FOR FRIDAY SEP 23: add all group url's and get service calls up and running for groups, orgs, members
 
-private readonly getAllGroupsUrl: string = 'https://localhost:8082/api/groups';
-private readonly getGroupByIdUrl = 'https://localhost:8082/api/groups/';
-private readonly getGroupByOrgUrl = 'https://localhost:8082/api/groups/byorganization/';
-private readonly addGroupUrl = 'https://localhost:8082/api/groups';
-private readonly editGroupUrl = 'https://localhost:8082/api/groups';
-private readonly deleteGroupUrl = 'https://localhost:8082/api/groups/';
+private readonly getAllGroupsUrl: string = 'http://localhost:8082/api/groups';
+private readonly getGroupByIdUrl = 'http://localhost:8082/api/groups/';
+private readonly getGroupByOrgUrl = 'http://localhost:8082/api/groups/byorganization/';
+private readonly addGroupUrl = 'http://localhost:8082/api/groups';
+private readonly editGroupUrl = 'http://localhost:8082/api/groups';
+private readonly deleteGroupUrl = 'http://localhost:8082/api/groups/';
 
-group$: Subject<TastingGroup[]> = new Subject<TastingGroup[]>();
 groupById$: Subject<TastingGroup> = new Subject<TastingGroup>();
 jsonContentTypeHeaders = {
   headers: new HttpHeaders().set('Content-Type', 'application/json')
@@ -25,10 +24,8 @@ jsonContentTypeHeaders = {
 
 constructor(private readonly http: HttpClient) { }
 
-getAllTastingGroups() {
-  this.http.get<TastingGroup[]>(this.getAllGroupsUrl).subscribe((group) => {
-    this.group$.next(group);
-  });
+getAllTastingGroups(): Observable<TastingGroup[]> {
+  return this.http.get<TastingGroup[]>(this.getAllGroupsUrl);
 }
 
 getTastingGroupById(id: number | string) {
