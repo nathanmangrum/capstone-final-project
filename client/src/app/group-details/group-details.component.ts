@@ -20,14 +20,14 @@ export class GroupDetailsComponent implements OnInit {
     console.log(this.groupDetails);
   }
   // TODO add modal in template and finish functionality
-  // editMember(member: Member) {
-  //   this.member = {...member};
-  //   this.memberEditModal = true;
-  // }
+  editMember(member: Member) {
+    // this.member = {...member};
+    // this.memberEditModal = true;
+  }
   //TODO fix this 
-  // deleteMember(member: Member) {
-  //   const mem = this.groupDetails.Members.find(id => );
-  //   this.groupService.deleteMemberFromTastingGroup();
-  // }
+  deleteMember(member: Member) {
+    // const mem = this.groupDetails.Members.find(id => );
+    // this.groupService.deleteMemberFromTastingGroup();
+  }
 
 }
