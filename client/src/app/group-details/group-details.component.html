@@ -1,5 +1,25 @@
-<p-panel>
+<p-panel class="mt-4">
   <p-header>{{ groupDetails.GroupName }}</p-header>
-
+  <p-table [value]="groupDetails.Members">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Member Name</th>
+        <th>Member Email</th>
+        <th>Member Phone</th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-member>
+      <tr>
+        <td>{{ member.MemberName }}</td>
+        <td>{{ member.MemberEmail }}</td>
+        <td>{{ member.MemberPhone }}</td>
+        <td>
+          <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editMember(member)"></button>
+          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteMember(member)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
 </p-panel>
 

@@ -1,4 +1,4 @@
-
+  
 <p-panel header="Tasting Groups">
   <p-table *ngIf="groups$ | async as groups"
            [value]="groups"
@@ -23,10 +23,13 @@
       </tr>
     </ng-template>
   </p-table>
-  <p-button label="Add Group" *ngIf="!showDetails">
+  <p-button label="Add Group" *ngIf="!showDetails" onclick="showAddGroup = true">
 
   </p-button>
 </p-panel>
 <div *ngIf="showDetails">
   <app-group-details [groupDetails]="selectedGroup"></app-group-details>
+</div>
+<div *ngIf="showAddGroup">
+
 </div>
