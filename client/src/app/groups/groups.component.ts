@@ -15,6 +15,7 @@ export class GroupsComponent implements OnInit {
   groups$!: Observable<TastingGroup[]>;
   selectedGroup!: TastingGroup;
   showDetails = false;
+  showAddGroup = false;
 
   constructor(private readonly router: Router, private readonly groupsService: TastingGroupService) { }
 

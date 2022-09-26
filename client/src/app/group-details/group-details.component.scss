@@ -1,14 +1,10 @@
-
-  p-panel ::ng-deep {
-    p-component {
-      margin-top: 1rem !important;
-    }
+p-panel ::ng-deep {
+  p-component {
+    margin-top: 1rem !important;
   }
+}
 
-  p-button ::ng-deep {
-    p-component {
-      display: flex;
-      flex: 1;
-      flex-direction: row-reverse;
-    }
-  }
+p-button ::ng-deep {
+    display: flex;
+    flex-direction: row-reverse;
+}
