@@ -23,25 +23,12 @@ export class NavComponent implements OnInit {
       {
         label: 'Tasting Groups',
         command: () => { this.router.navigate(['/tasting-groups']) }
-      },
-      {
-        label: 'Register a group',
-        command: () => { this.openRegisterDialog() }
       }
     ];
   }
-
-  routeToWhiskiesComponent() {
-    console.log('whiskies component');
-  }
-
+  
   routeToGroupsComponent() {
-    console.log('is it trying');
     this.router.navigateByUrl('/tasting-groups');
-  }
-
-  openRegisterDialog() {
-    this.showRegisterDialog = true;
   }
 
 }

@@ -1,35 +1,166 @@
-  
+<p-toast></p-toast>
 <p-panel header="Tasting Groups">
-  <p-table *ngIf="groups$ | async as groups"
+  <p-table #tastingGroups *ngIf="groups$ | async as groups"
            [value]="groups"
+           dataKey="GroupName"
            selectionMode="single"
-           [(selection)]="selectedGroup"
-           (onRowSelect)="showGroupDetails($event.data)"
-           (onRowUnselect)="showDetails = false">
+           [scrollable]="true"
+           scrollHeight="600px"
+           [globalFilterFields]="['GroupName', 'OrganizationName', 'SponsorName']">
+    <ng-template pTemplate="caption">
+      <span class="p-input-icon-left ml-auto">
+        <i class="pi pi-search"></i>
+        <input pInputText
+               type="text"
+               #groupsFilterField
+               (input)="tastingGroups.filterGlobal($any($event.target).value, 'contains')"
+               placeholder="Search keyword" />
+    </span>
+    </ng-template>
     <ng-template pTemplate="header">
       <tr>
+        <th style="width: 3rem"></th>
         <th>Group Name</th>
-        <th>Organization</th>
-        <th>Sponsor</th>
+        <th>Whiskey</th>
+        <th>Tasting Host</th>
         <th>Member Count</th>
+        <th></th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-groups>
-      <tr [pSelectableRow]="groups">
+    <ng-template pTemplate="body" let-groups let-expanded="expanded">
+      <tr>
+        <td>
+          <button type="button" pButton pRipple [pRowToggler]="groups" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+      </td>
         <td>{{ groups.GroupName }}</td>
         <td>{{ groups.OrganizationName }}</td>
         <td>{{ groups.SponsorName }}</td>
         <td>{{ groups.Members.length }}</td>
+        <td>
+          <button *ngIf="!expanded" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editGroup(groups)"></button>
+          <button *ngIf="!expanded" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteGroup(groups)"></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-groups>
+      <tr>
+        <td colspan="7">
+          <div class="p-3" style="width: 100%">
+            <p-table [value]="groups.Members" dataKey="MemberName" [scrollable]="true" scrollHeight="400px">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Member Name</th>
+                  <th>Member Email</th>
+                  <th>Member Phone</th>
+                  <th></th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-member>
+                <tr>
+                  <td>{{ member.MemberName }}</td>
+                  <td>{{ member.MemberEmail }}</td>
+                  <td>{{ member.MemberPhone }}</td>
+                  <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editMember(member, groups)"></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteMember(member, groups)"></button>
+                  </td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="footer">
+                <p-button class="add-member-btn" label="Add Member" *ngIf="!showDetails" (onClick)="addMember(groups)"></p-button>
+              </ng-template>
+            </p-table>
+          </div>
+        </td>
       </tr>
     </ng-template>
   </p-table>
-  <p-button label="Add Group" *ngIf="!showDetails" onclick="showAddGroup = true">
+  <p-button label="Add Tasting Group" *ngIf="!showDetails" (onClick)="addGroup()">
 
   </p-button>
 </p-panel>
-<div *ngIf="showDetails">
-  <app-group-details [groupDetails]="selectedGroup"></app-group-details>
-</div>
 <div *ngIf="showAddGroup">
+  <p-dialog [(visible)]="showAddGroup" [modal]="true" styleClass="p-fluid">
+    <p-header>{{ modalHeader }}</p-header>
+    <ng-template pTemplate="content">
+      <form [formGroup]="addGroupForm">
+        <div class="field">
+          <label for="GroupName">Group Name</label>
+          <input type="text"
+                 pInputText
+                 required
+                 formControlName="GroupName">
+        </div>
+        <div class="field">
+          <label>Tasting Host</label>
+          <input type="text"
+                 pInputText
+                 required
+                 formControlName="SponsorName">
+        </div>
+        <div class="field">
+          <label>Tasting Host Phone</label>
+          <input type="text"
+                 pInputText
+                 required
+                 formControlName="SponsorPhone">
+        </div>
+        <div class="field">
+          <label>Tasting Host Email</label>
+          <input type="phone"
+                 pInputText
+                 formControlName="SponsorEmail">
+        </div>
+        <div class="field">
+          <label>Organization Name</label>
+          <p-dropdown [options]="whiskeyOrganization"
+                      placeholder="Select an organization"
+                      formControlName="OrganizationName"></p-dropdown>
+        </div>
+        <div class="field">
+          <label>Max Group Size</label>
+          <p-inputNumber formControlName="MaxGroupSize"></p-inputNumber>
+        </div>
+      </form>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="showAddGroup = false"></button>
+      <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="onSubmit()"></button>
+    </ng-template>
+  </p-dialog>
+</div>
+<div *ngIf="showMemberModal">
+  <p-dialog [(visible)]="showMemberModal" [modal]="true" styleClass="p-fluid">
+    <p-header>{{ memberModalHeader }}</p-header>
+    <ng-template pTemplate="content">
+      <form [formGroup]="addMemberForm">
+        <div class="field">
+          <label for="MemberName">Member Name</label>
+          <input type="text"
+                 pInputText
+                 required
+                 formControlName="MemberName">
+        </div>
+        <div class="field">
+          <label>Member Email</label>
+          <input type="text"
+                 pInputText
+                 required
+                 formControlName="MemberEmail">
+        </div>
+        <div class="field">
+          <label>Member Phone</label>
+          <input type="text"
+                 pInputText
+                 required
+                 formControlName="MemberPhone">
+        </div>
+      </form>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="showMemberModal = false"></button>
+      <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="onSubmitMember()"></button>
+    </ng-template>
+  </p-dialog>
 
 </div>

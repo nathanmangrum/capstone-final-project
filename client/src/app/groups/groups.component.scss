@@ -4,4 +4,29 @@
       margin-top: 1rem;
     }
   }
+
+  p-button ::ng-deep {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  p-dialog ::ng-deep {
+    min-height: 500px;
+    min-width: 500px;
+  }
+
+  .add-member-btn {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  p-table::ng-deep {
+    tfoot {
+      display:flex
+    }
+
+    .p-datatable-header {
+      display: flex;
+    }
+  }
 }

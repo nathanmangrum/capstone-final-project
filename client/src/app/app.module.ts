@@ -19,9 +19,12 @@ import { MainComponent } from './main/main.component';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MessageService } from 'primeng/api';
+import { FilterService, MessageService } from 'primeng/api';
 import { GroupDetailsComponent } from './group-details/group-details.component';
 import { RouterModule } from '@angular/router';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [				
@@ -48,9 +51,12 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    TableModule
+    TableModule,
+    InputTextModule,
+    DropdownModule,
+    InputNumberModule
   ],
-  providers: [ MessageService ],
+  providers: [ MessageService, FilterService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

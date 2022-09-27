@@ -12,15 +12,15 @@ export class MemberService {
 
 constructor(private readonly http: HttpClient) { }
 
-addMemberToTastingGroup(groupId: string, member: Member): Observable<Member> {
+addMemberToTastingGroup(groupId: number, member: Member): Observable<Member> {
   return this.http.post<Member>(`${this.groupUrl}/${groupId}/members`, member);
 }
 
-editMemberInTastingGroup(groupId: string, member: Member): Observable<Member> {
+editMemberInTastingGroup(groupId: number, member: Member): Observable<Member> {
   return this.http.put<Member>(`${this.groupUrl}/${groupId}/members`, member);
 }
 
-deleteMemberFromTastingGroup(groupId: string, memberId: string): Observable<Member> {
+deleteMemberFromTastingGroup(groupId: number, memberId: string): Observable<Member> {
   return this.http.delete<Member>(`${this.groupUrl}/${groupId}/members/${memberId}`);
 }
 
