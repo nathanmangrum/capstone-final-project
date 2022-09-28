@@ -1,23 +1,38 @@
 <div class="wrapper">
+  <p-card class="title">
+    <strong><h2>Welcome to our Whiskey Tasting site! Here you can organize or join a tasting groups for different types of whiskies! Happy drinking!</h2></strong>
+  </p-card>
   <p-panel header="Whiskey" class="main">
     <div class="grid card-wrapper">
         <p-card class="col-12" header="Scotch">
+          <ng-template pTemplate="content">
             <img class="scotch" src="./././assets/images/0x0.jpeg" alt="scotch">
             <p>Scotch whisky is categorized as malt whiskey distilled in Scotland. There are multiple types of Scotch
               and each offer a different flavor profile. Certain areas of Scotland are known for specific flavors as well.
               For instance, on the island of Islay they use peat to fuel fires to dry malted barley. This gives it a taste one could 
               describe as 'like drinking a liquid campfire.'
             </p>
-            <p-button label="View Details"></p-button>
+          </ng-template>
       </p-card>
       <p-card class="col-12" header="Bourbon">
-        <img class="bourbon" src="./././assets/images/bourbon.png" alt="my-bourbon">
-        <p-button label="View Details"></p-button>
+        <ng-template pTemplate="content">
+          <img class="bourbon" src="./././assets/images/bourbon.png" alt="my-bourbon">
+          <p>Bourbon whiskey is to America as Scotch is to Scotland. It's America's own home-grown spirit. Most bourbon hails
+             from the state of Kentucky, where resources are plentiful and the climate is perfect for the distilling of the spirit.
+             According to law, bourbon must be made with a mashbill that consists of at least 51% corn. The rest of the mashbill is
+             normally made up of barley, rye, or wheat. Wheat gives off a sweeter flavor, while rye gives a spicy taste.
+          </p>
+        </ng-template>
       </p-card>
       <p-card class="col-12" header="Rye">
-        <p-button label="View Details"></p-button>
+        <ng-template pTemplate="content">
+          <img class="rye" src="./././assets/images/rye.jpeg">
+          <p>For a spirit to be able to call itself Rye Whiskey, the mashbill must contain at least 51% rye grain. It can't be
+            over 125 proof, and must be distilled in new charred oak barrels, similar to bourbon. The flavor profile for Rye is
+            quite the contrast to bourbon however, as rye has a spiciness to it while bourbon is often sweeter.
+          </p>
+        </ng-template>
       </p-card>
     </div>
   </p-panel>
 </div>
-

@@ -1,11 +1,18 @@
 :host {
   p-card::ng-deep {
-    margin-top: 1rem;
+    .p-component {
+      margin-bottom: 1rem;
+    }
     .p-card-content {
       display: flex;
-      justify-content: space-between;
-      flex-direction: column;
     }
+  }
+}
+
+.title {
+  margin-bottom: 1rem !important;
+  strong {
+    text-align: center;
   }
 }
 
@@ -21,18 +28,11 @@ img {
   flex: 1
 }
 
-p-button {
-  flex: 1;
-  justify-content: flex-end;
-  display: flex;
-  height: 50px;
-}
-
 .main {
   height: 100%;
 }
 
-.scotch {
+.scotch, .bourbon, .rye {
   max-height: 200px;
   max-width: 400px;
   margin-right: 1rem;
@@ -40,10 +40,4 @@ p-button {
   box-shadow: 1px 1px 1px 1px black;
 }
 
-.bourbon {
-  max-height: 200px;
-  max-width: 400px;
-  margin-right: 1rem;
-  border-radius: 3%;
-  box-shadow: 1px 1px 1px 1px black;
-}
+
